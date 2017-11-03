@@ -36,7 +36,7 @@ class Stu2{
     //年龄
     public $age;
 
-    //构造方法，在类被new时自动调用
+    //构造方法，在类被new时自动调用, 用于给属性赋初始值
     public function __construct($name,$age){
         $this->name=$name;
         $this->age=$age;
