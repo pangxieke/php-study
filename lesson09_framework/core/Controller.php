@@ -13,7 +13,7 @@ class Controller {
 
     public function display($tpl){
         extract($this->vars);
-        include '/views/' . $tpl . 'html';
+        include '/views/' . $tpl . '.html';
     }
 
     public function assign($key, $value){

@@ -10,5 +10,7 @@ class SiteController extends controller{
 
     public function index(){
         echo 'hello world!';
+
+
     }
 }
