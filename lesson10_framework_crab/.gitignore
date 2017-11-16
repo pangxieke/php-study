@@ -1,4 +1,4 @@
 ./nbproject/*
 .idea/*
 ./vendor
-./runtime
+/runtime/*

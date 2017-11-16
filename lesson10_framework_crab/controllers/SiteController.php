@@ -8,5 +8,9 @@ class SiteController extends Controller
         
         $this->assign('hello', $hello);
         $this->display();
+
+//        include './models/Site.php';
+//        $model = new Site();
+//        $model->getUserList();
     }
 }

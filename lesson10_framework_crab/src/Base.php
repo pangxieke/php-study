@@ -42,9 +42,6 @@ class Base
 
         //加载组件components
 
-        
-
-
     }
     
     /*
@@ -55,7 +52,7 @@ class Base
         //获取访问控制器
         if(isset($_GET['c']))
         {
-            $c = $_GET['c'];
+            $c = ucfirst($_GET['c']);
         }else{
             $c = $this->defaultController;
         }
