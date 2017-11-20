@@ -6,13 +6,16 @@
 //引入文件
 require_once './common.php';
 
+//检测是否登录，未登录不允许添加文章
+$user_id = isLogin();
+
 //接收表单变量 通过$_GET;
 $title = @$_GET['title'];
 $content = @$_GET['content'];
 
 $category = '1';
 if($title && $content){
-    $res = addPost($title, $content, $category);
+    $res = addPost($title, $content, $category, $user_id);
     if($res){
         echo '<script>
                 alert("添加成功！");

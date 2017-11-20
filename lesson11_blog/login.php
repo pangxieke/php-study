@@ -5,8 +5,18 @@ $username = @$_GET['username'];
 $password= md5(@$_GET['password']);
 
 $res = login($username, $password);
-if($res)
+
+if(!empty($_SESSION['user_id'])){
+    echo '<script>
+                alert("您已经登录！");
+                window.location.href="./index.php"
+        </script>';
+} elseif($res)
 {
+
+    $_SESSION['username'] = $username;
+    $_SESSION['user_id'] = $res['id'];
+
     echo '<script>
                 alert("登录成功！");
                 window.location.href="./index.php"

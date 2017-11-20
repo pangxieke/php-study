@@ -18,11 +18,16 @@ $result = getPosts();
         <div class="container">
             <?=getNav()?>
             <?php
-            foreach($result as $key=>$value ){ ?>
+            foreach($result as $key=>$value ){?>
+
                 <div class="article">
                     <h2><?=$value['title']?></h2>
-                    author:<?=$value['user_id']?>
-                    content:<?=mb_substr($value['content'],0, 200)?>
+                    author:<?=getUsernameById($value['user_id'])?>
+
+                    date:<?=date('Y-m-d H:i:s', $value['created'])?>
+                    <br>
+                    <br>
+                    <?=mb_substr($value['content'],0, 200)?>
                 </div>
             <?php }?>
         </div>
