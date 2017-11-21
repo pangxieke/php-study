@@ -17,16 +17,17 @@ $result = getPosts();
     <body>
         <div class="container">
             <?=getNav()?>
+            <div class="banner">
+            </div>
             <?php
             foreach($result as $key=>$value ){?>
 
-                <div class="article">
+                <div class="article_box">
                     <h2><?=$value['title']?></h2>
-                    author:<?=getUsernameById($value['user_id'])?>
-
-                    date:<?=date('Y-m-d H:i:s', $value['created'])?>
-                    <br>
-                    <br>
+                    <p class="dateview">
+                        <span><?=getUsernameById($value['user_id'])?></span>
+                        <span><?=date('Y-m-d H:i:s', $value['created'])?></span>
+                    </p>
                     <?=mb_substr($value['content'],0, 200)?>
                 </div>
             <?php }?>
