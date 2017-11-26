@@ -28,7 +28,8 @@ if(!empty($data))
 
 <body>
 <div class="container">
-    <?=getNav()?>
+    <?=getAdminNav()?>
+    <div style="margin:20px auto; width:40%;">
     <form action="./register.php" method="post">
         <div>用户名：<input type="text" name="username" /></div>
         <div>密 码：<input type="text" name="password" /></div>
@@ -36,6 +37,7 @@ if(!empty($data))
 
         <div><input type="submit"  value="注册"/></div>
     </form>
+    </div>
 </div>
 </body>
 </html>

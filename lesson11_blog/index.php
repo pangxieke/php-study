@@ -23,7 +23,7 @@ $result = getPosts();
             foreach($result as $key=>$value ){?>
 
                 <div class="article_box">
-                    <h2><?=$value['title']?></h2>
+                    <a href="./info.php?id=<?=$value['id']?>"><h2><?=$value['title']?></h2></a>
                     <p class="dateview">
                         <span><?=getUsernameById($value['user_id'])?></span>
                         <span><?=date('Y-m-d H:i:s', $value['created'])?></span>

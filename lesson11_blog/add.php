@@ -34,7 +34,7 @@ if($title && $content){
     </head>
     <body>
         <div class="container">
-            <?=getNav()?>
+            <?=getAdminNav()?>
             <form action="./add.php" method="GET" >
                 title:<input type="text" size=20  name="title"/><br>
                 content:<textarea name="content"></textarea><br>

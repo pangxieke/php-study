@@ -69,16 +69,26 @@ function register($username, $password, $email)
 
 function getNav()
 {
-    $username = @$_SESSION['username'];
     $str = <<<TD
 <header>
 <a id="logo" title="Blog"></a>
 <nav>
   <a href="./index.php">首页</a> |
-  <a href="./add.php">添加</a> |
-  <a href="./login.php">登录</a> |
-  <a href="./register.php">注册</a> |
+  <a href="./admin.php">后台</a> |
+TD;
+    $str .= "</nav></header>";
+    return $str;
+}
 
+function getAdminNav()
+{
+    $username = @$_SESSION['username'];
+    $str = <<<TD
+<header>
+<a id="logo" title="Blog"></a>
+<nav>
+  <a href="./index.php">前台</a> |
+  <a href="./add.php">添加</a> |
 TD;
     if($username){
         $str .= "<a href='./logout.php'>退出( " . $username . ")</a>" ;
