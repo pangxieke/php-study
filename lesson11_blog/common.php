@@ -43,6 +43,7 @@ function addPost($title, $contents, $category, $user_id) {
     $sql = "INSERT INTO `" . DB_PREFIX ."article` SET `category_id` = '{$category}'"
     . ", `title` = '{$title}', `content` = '{$contents}', `created` = $now"
     . ", `user_id` = $user_id";
+
     return mysqli_query($link, $sql);
 }
 
@@ -63,7 +64,8 @@ function login($username, $password){
 function register($username, $password, $email)
 {
     $password = md5($password);
-    $sql = "INSERT INTO `" . DB_PREFIX . "user` (`username`, `password`, `email`, `created`) VALUES ('$username', '$password', '$email', NOW())";
+    $now = time();
+    $sql = "INSERT INTO `" . DB_PREFIX . "user` (`username`, `password`, `email`, `created`) VALUES ('$username', '$password', '$email', '$now')";
 
     $link = getLink();
     return mysqli_query($link, $sql);
@@ -111,11 +113,7 @@ TD;
  */
 function checkLogin()
 {
-    if($_SESSION['username']){
-        return $_SESSION['user_id'];
-    }else{
-        return false;
-    }
+    return $_SESSION['user_id'] ? $_SESSION['user_id'] : false;
 }
 
 function isLogin(){

@@ -14,6 +14,10 @@ if(!empty($data))
                 alert("注册成功！请登录！");
                 window.location.href="./login.php"
         </script>';
+    }else{
+        echo '<script>
+                alert("注册失败！");
+        </script>';
     }
 
 }else

@@ -4,7 +4,9 @@
  */
 require_once './common.php';
 
-$result = getPosts();
+$category_id = @$_GET['category_id'] ? : null;
+
+$result = getPosts(null, $category_id);
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +28,8 @@ $result = getPosts();
                     <a href="./info.php?id=<?=$value['id']?>"><h2><?=$value['title']?></h2></a>
                     <p class="dateview">
                         <span><?=getUsernameById($value['user_id'])?></span>
+                        <?php $cate = getCategorys($value['category_id']);?>
+                        <span><?=$cate[0]['name']?></span>
                         <span><?=date('Y-m-d H:i:s', $value['created'])?></span>
                     </p>
                     <?=mb_substr($value['content'],0, 200)?>

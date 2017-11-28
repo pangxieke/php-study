@@ -10,10 +10,12 @@ require_once './common.php';
 $user_id = isLogin();
 
 //接收表单变量 通过$_GET;
-$title = @$_GET['title'];
-$content = @$_GET['content'];
+$title = @$_POST['title'];
+$content = @$_POST['content'];
 
-$category = '1';
+
+$category = @$_POST['category_id'];
+
 if($title && $content){
     $res = addPost($title, $content, $category, $user_id);
     if($res){
@@ -35,10 +37,20 @@ if($title && $content){
     <body>
         <div class="container">
             <?=getAdminNav()?>
-            <form action="./add.php" method="GET" >
+            <?php $cates = getCategorys();
+
+            ?>
+            <form action="./add.php" method="post" >
                 title:<input type="text" size=20  name="title"/><br>
-                content:<textarea name="content"></textarea><br>
-                <input type="submit" name="submit"/>
+                category:<select name="category_id">
+                    <?php foreach($cates as $val){?>
+                    <option value="<?=$val['id']?>"><?=$val['name']?></option>
+                    <?php }?>
+                </select>
+                <br>
+                content:<textarea name="content" style="width:50%;min-height:200px;"></textarea><br>
+
+                <input type="submit" name="submit" value="添加"/>
             </form>
         </div>
 
