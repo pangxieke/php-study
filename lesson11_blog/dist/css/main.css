@@ -30,7 +30,7 @@ nav{
 }
 nav a{
     font-size:18px;
-    margin: 0 5px;
+    margin: 0 3px;
     padding: 0 8px;
 }
 a:link, a:visited{
@@ -42,7 +42,7 @@ a:link, a:visited{
     height:60px;
     margin:10px 0 0 0;
     position: absolute;
-    background:url(../images/logo.jpg);
+    background:url(../images/logo.jpg) no-repeat;;
 }
 .banner{
     background:url(../images/banner_top.jpg) top center;

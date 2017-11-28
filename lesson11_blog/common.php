@@ -1,5 +1,6 @@
 <?php
-include('./conn.php');
+require_once './config.php';
+
 session_start();
 date_default_timezone_set('PRC'); //设置中国时区
 
@@ -21,7 +22,7 @@ function getPosts($id = null, $cat_id = null) {
 
     $sql .= " ORDER BY " . DB_PREFIX . "article.id desc";
 
-    global $link;
+    $link = getLink();
     $query = mysqli_query($link, $sql);
 
     while ($row = mysqli_fetch_assoc($query) ) {
@@ -38,7 +39,7 @@ function addPost($title, $contents, $category, $user_id) {
     $user_id 	= (int) $user_id;
     $now = time();
 
-    global $link;
+    $link = getLink();
     $sql = "INSERT INTO `" . DB_PREFIX ."article` SET `category_id` = '{$category}'"
     . ", `title` = '{$title}', `content` = '{$contents}', `created` = $now"
     . ", `user_id` = $user_id";
@@ -47,7 +48,8 @@ function addPost($title, $contents, $category, $user_id) {
 
 function login($username, $password){
     $sql = "SELECT * from `" . DB_PREFIX . "user` WHERE `username`= '$username' and `password`= '$password'";
-    global $link;
+
+    $link = getLink();
     $query = mysqli_query($link, $sql);
 
     $posts = [];
@@ -63,19 +65,25 @@ function register($username, $password, $email)
     $password = md5($password);
     $sql = "INSERT INTO `" . DB_PREFIX . "user` (`username`, `password`, `email`, `created`) VALUES ('$username', '$password', '$email', NOW())";
 
-    global $link;
+    $link = getLink();
     return mysqli_query($link, $sql);
 }
 
 function getNav()
 {
+    $category = getCategorys();
     $str = <<<TD
 <header>
 <a id="logo" title="Blog"></a>
 <nav>
   <a href="./index.php">首页</a> |
-  <a href="./admin.php">后台</a> |
 TD;
+    if($category){
+        foreach ($category as $val){
+            $str .= "<a href='./index.php?category_id={$val['id']}'>{$val['name']}</a> |";
+        }
+    }
+    $str .= '<a href="./admin.php">后台</a>';
     $str .= "</nav></header>";
     return $str;
 }
@@ -125,7 +133,8 @@ function getUsernameById($user_id)
 {
     $user_id = intval($user_id);
     $sql = "SELECT `username` from `" . DB_PREFIX . "user` WHERE `id`= '$user_id'";
-    global $link;
+
+    $link = getLink();
     $query = mysqli_query($link, $sql);
 
     $posts = [];
@@ -134,4 +143,37 @@ function getUsernameById($user_id)
     }
 
     return array_pop($posts)['username'];
+}
+
+function getCategorys($category_id = null)
+{
+    $category_id = intval($category_id);
+    $sql = "SELECT * from `" . DB_PREFIX . "category` ";
+    if($category_id){
+        $sql .= " WHERE `id`= '$category_id' ";
+    }
+
+    $link = getLink();
+    $query = mysqli_query($link, $sql);
+
+    $posts = [];
+    while ($row = mysqli_fetch_assoc($query) ) {
+        $posts[] = $row;
+    }
+
+    return $posts;
+}
+
+function getLink()
+{
+    $link = mysqli_connect (DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
+
+    //判断是否连接成功
+    if (!$link) {
+        echo "Failed to connect to MySQL";
+        exit;
+    }
+    mysqli_select_db ($link, DB_DATABASE);
+    mysqli_set_charset($link, DB_CHARSET);
+    return $link;
 }
