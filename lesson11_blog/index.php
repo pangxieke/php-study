@@ -35,6 +35,20 @@ $result = getPosts(null, $category_id);
                     <?=mb_substr($value['content'],0, 200)?>
                 </div>
             <?php }?>
+
+            <div id="pager" class="myyiiPager">
+                <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="/site/index">首页</a></li>
+                    <li class="previous hidden"><a href="/site/index">上一页</a></li>
+                    <li class="page selected"><a href="/site/index">1</a></li>
+                    <li class="page"><a href="/site/index?page=2">2</a></li>
+                    <li class="page"><a href="/site/index?page=3">3</a></li>
+                    <li class="page"><a href="/site/index?page=4">4</a></li>
+                    <li class="page"><a href="/site/index?page=5">5</a></li>
+                    <li class="page"><a href="/site/index?page=6">6</a></li>
+                    <li class="page"><a href="/site/index?page=7">7</a></li>
+                    <li class="next"><a href="/site/index?page=2">下一页</a></li>
+                    <li class="last"><a href="/site/index?page=7">末页</a></li></ul>
+            </div>
         </div>
 
     </body>
