@@ -4,7 +4,7 @@ require_once './config.php';
 session_start();
 date_default_timezone_set('PRC'); //设置中国时区
 
-function getPosts($id = null, $cat_id = null) {
+function getPosts($id = null, $cat_id = null, $start = null, $limit = null) {
     $posts = array();
     $sql = "SELECT " . DB_PREFIX."article.* FROM " . DB_PREFIX."article"
         . " INNER JOIN " . DB_PREFIX. "category "
@@ -21,6 +21,13 @@ function getPosts($id = null, $cat_id = null) {
     }
 
     $sql .= " ORDER BY " . DB_PREFIX . "article.id desc";
+    if($start !== null){
+        $sql .= " Limit $start";
+
+        if($limit){
+            $sql .= ", $limit";
+        }
+    }
 
     $link = getLink();
     $query = mysqli_query($link, $sql);

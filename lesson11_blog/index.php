@@ -6,7 +6,20 @@ require_once './common.php';
 
 $category_id = @$_GET['category_id'] ? : null;
 
-$result = getPosts(null, $category_id);
+$page = @$_GET['page'] ? : 1;
+$pageSize = 3;
+$start = ($page - 1) * $pageSize;
+$limit = $pageSize;
+
+//查询所有数据
+$all = getPosts(null, $category_id);
+//查询总条数
+$count = count($all);
+//获得最大页码
+$pageMax = ceil($count / $pageSize);
+
+//当前页查询结果集
+$result = getPosts(null, $category_id, $start, $limit);
 ?>
 
 <!DOCTYPE html>
@@ -39,15 +52,24 @@ $result = getPosts(null, $category_id);
             <div id="pager" class="myyiiPager">
                 <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="/site/index">首页</a></li>
                     <li class="previous hidden"><a href="/site/index">上一页</a></li>
-                    <li class="page selected"><a href="/site/index">1</a></li>
-                    <li class="page"><a href="/site/index?page=2">2</a></li>
-                    <li class="page"><a href="/site/index?page=3">3</a></li>
-                    <li class="page"><a href="/site/index?page=4">4</a></li>
-                    <li class="page"><a href="/site/index?page=5">5</a></li>
-                    <li class="page"><a href="/site/index?page=6">6</a></li>
-                    <li class="page"><a href="/site/index?page=7">7</a></li>
-                    <li class="next"><a href="/site/index?page=2">下一页</a></li>
-                    <li class="last"><a href="/site/index?page=7">末页</a></li></ul>
+                    <?php for($i = 1; $i <= $pageMax; $i++){
+                        $selected = '';
+                        if($page == $i){
+                            $selected = 'selected';
+                        }
+                        echo "<li class='page $selected'><a href='./index.php?page=$i'>$i</a></li>";
+                    }
+
+                    ?>
+                    <?php
+                    $next = $page + 1;
+                    if($next > $pageMax){
+                        $next = $pageMax;
+                    }
+                    ?>
+                    <li class="next"><a href="./index.php?page=<?=$next?>">下一页</a></li>
+
+                </ul>
             </div>
         </div>
 
