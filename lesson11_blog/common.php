@@ -83,16 +83,20 @@ function getNav()
     $category = getCategorys();
     $str = <<<TD
 <header>
-<a id="logo" title="Blog"></a>
-<nav>
-  <a href="./index.php">首页</a> |
+            <a id="logo" href="/private/yii_blog" title="Blog"></a>
+            <nav class="topnav" id="topnav">
+                <a href="#" id="topnav_current">
+                    <span>首页</span>
+                    <span class="en">Protal</span>
+                </a>
 TD;
     if($category){
         foreach ($category as $val){
-            $str .= "<a href='./index.php?category_id={$val['id']}'>{$val['name']}</a> |";
+            $str .= "<a href='./index.php?category_id={$val['id']}'><span>{$val['name']}</span><span class='en'>{$val['name']}</span></a> ";
         }
     }
-    $str .= '<a href="./admin.php">后台</a>';
+    $str .= '<a href="./admin.php"><span>后台</span>
+                    <span class="en">Admin</span></a>';
     $str .= "</nav></header>";
     return $str;
 }

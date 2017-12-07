@@ -1,14 +1,55 @@
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     color: #555;
     font: normal 10pt Arial, Helvetica, sans-serif;
     background: #EFEFEF;
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
 
-body{
+ul {
+    list-style: none;
+}
+
+.w {
+    width: 980px;
     margin: 0 auto;
 }
+
+.fl {
+    float: left;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.bb {
+    border-bottom: 1px solid #ccc;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '.';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
 .container{
     margin: 0 10%;
 }
@@ -18,37 +59,260 @@ body{
     border-bottom:1px solid orange;
     margin-bottom:10px;
 }
-header{
-    width:80%;
-    height:80px;
+
+header {
+    width: 1210px;
+    margin: auto;
+    height: 80px;
+    position: relative;
+    overflow: hidden
 }
-nav{
-    float:right;
-    width:100%;
-    margin:30px 0 0 0;
-    text-align:right;
+
+#logo {
+    width: 260px;
+    height: 60px;
+    margin: 10px 0 0 0;
+    position: absolute;
+    background: url(../images/logo.jpg) no-repeat;
+    background-size:200px 60px;
+    display: block
 }
-nav a{
-    font-size:18px;
-    margin: 0 3px;
+nav {
+    float: right;
+    width: 100%;
+    margin: 30px 0 0 0;
+    text-align: right
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+}
+
+nav a:hover {
+    text-decoration: none
+}
+
+.topnav a {
+    margin: 0 5px;
     padding: 0 8px;
 }
+
+.topnav a span:first-child {
+    z-index: 2;
+    display: block;
+}
+
+.topnav a span:last-child {
+    z-index: 1;
+    display: block;
+    color: #999;
+    font: 12px Georgia, serif;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+    text-align: center
+}
+
+.topnav a:hover span:last-child,.topnav a:focus span:last-child {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    transform: translateY(0%);
+}
+
+
+.banner {
+    background: url(../images/banner_top.jpg) top center;
+    height: 265px;
+    overflow: hidden
+}
+
+.texts {
+    width: 350px;
+    line-height: 26px;
+    margin: 60px 0 0 20px;
+    float: left;
+    font-size: 14px;
+}
+
+.texts p {
+    -webkit-transform: translate(60px);
+    -moz-transform: translate(60px);
+    -o-transform: translate(60px);
+    -ms-transform: translate(60px);
+    transform: translate(60px);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8), 2px 2px 3px
+    rgba(180, 151, 151, 0.3);
+}
+
+.texts p:nth-child(1) {
+    -webkit-animation: animations 3s ease-out 1s backwards;
+    -moz-animation: animations 3s ease-out 1s backwards;
+    -o-animation: animations 3s ease-out 1s backwards;
+    -ms-animation: animations 3s ease-out 1s backwards;
+    animation: animations 3s ease-out 1s backwards;
+}
+
+.texts p:nth-child(2) {
+    -webkit-animation: animations 3s ease-out 4s backwards;
+    -moz-animation: animations 3s ease-out 4s backwards;
+    -o-animation: animations 3s ease-out 4s backwards;
+    -ms-animation: animations 3s ease-out 4s backwards;
+    animation: animations 3s ease-out 4s backwards;
+}
+
+.texts p:nth-child(3) {
+    -webkit-animation: animations2 5s ease-in-out 7s backwards;
+    -moz-animation: animations2 5s ease-in-out 7s backwards;
+    -o-animation: animations2 5s ease-in-out 7s backwards;
+    -ms-animation: animations2 5s ease-in-out 7s backwards;
+    animation: animations2 5s ease-in-out 7s backwards;
+}
+
+
+.avatar {
+    float: right;
+    margin: 40px;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: #FFF 4px solid
+}
+
+.avatar a {
+    display: block;
+    padding-top: 97px;
+    width: 160px;
+    background: url(../images/photos2.jpg) no-repeat;
+    background-size: 130px 130px
+}
+
+.avatar a span {
+    display: block;
+    margin-top: 63px;
+    padding-top: 8px;
+    width: 130px;
+    height: 55px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+    -webkit-transition: margin-top .2s ease-in-out;
+    -moz-transition: margin-top .2s ease-in-out;
+    -o-transition: margin-top .2s ease-in-out;
+    transition: margin-top .2s ease-in-out;
+}
+
+.avatar a:hover span {
+    display: block;
+    margin-top: 0;
+}
+
+article {
+    width: 1210px;
+    margin: 20px auto;
+    overflow: hidden
+}
+
+.bloglist {
+    width: 950px;
+    overflow: hidden;
+    background: url(../images/r_line.jpg) repeat-y right;
+}
+
+.bloglist h3 {
+    margin: 20px 0 10px 0;
+    color: #333
+}
+
+.bloglist figure {
+    float: left;
+    width: 183px;
+}
+
+.bloglist figure img {
+    padding: 4px;
+    border: #f4f2f2 1px solid;
+    width: 175px;
+}
+
+.bloglist ul {
+    float: left;
+    width: 630px;
+    margin: 10px 0px 0 15px;
+    line-height: 20px;
+}
+
+.dateview {
+    width: 915px;
+    overflow: hidden;
+    clear: both;
+    margin: 10px 0 0 0;
+    display: inline-block;
+    background: #f6f6f6 url(../images/time.jpg) 15px center no-repeat;
+    line-height: 26px;
+    height: 26px;
+    color: #838383;
+    padding-left: 25px;
+}
+
+.dateview span {
+    margin: 0 10px;
+}
+
+.dateview span a {
+    color: #099B43;
+}
+
+a.readmore {
+    background: #fd8a61;
+    color: #fff;
+    padding: 5px 10px;
+    float: right;
+    margin: 20px 0 0 0
+}
+.weather {
+    background: url(../images/weather.jpg) no-repeat;
+    height: 88px;
+    margin: 20px 0
+}
+
+
+.article_box{
+    min-height:175px;
+    width:937px;
+    border:1px solid white;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+.article_box h3{
+    text-align:center;
+}
+.article_box h3:hover{
+    text-decoration:underline;
+}
+
+.article_box ul{
+    width:850px;
+}
+
+.article_box ul p img{
+    max-width:910px;
+}
+
 a:link, a:visited{
     text-decoration: none;
     color:#333;
 }
-#logo{
-    width:260px;
-    height:60px;
-    margin:10px 0 0 0;
-    position: absolute;
-    background:url(../images/logo.jpg) no-repeat;;
-}
-.banner{
-    background:url(../images/banner_top.jpg) top center;
-    height:265px;
-    overflow: hidden;
-}
+
 .dateview{
     width: 90%;
     margin:10px 0 0 0;
