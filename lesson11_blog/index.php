@@ -50,8 +50,12 @@ $result = getPosts(null, $category_id, $start, $limit);
             <?php }?>
 
             <div id="pager" class="myyiiPager">
-                <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="/site/index">首页</a></li>
-                    <li class="previous hidden"><a href="/site/index">上一页</a></li>
+                <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="">首页</a></li>
+                    <?php if($page > 1){
+                    ?>
+                        <li class="previous hidden"><a href="./index.php?page=<?=($page-1)?>">上一页</a></li>
+                    <?php } ?>
+
                     <?php for($i = 1; $i <= $pageMax; $i++){
                         $selected = '';
                         if($page == $i){
@@ -61,13 +65,15 @@ $result = getPosts(null, $category_id, $start, $limit);
                     }
 
                     ?>
+
                     <?php
-                    $next = $page + 1;
-                    if($next > $pageMax){
-                        $next = $pageMax;
-                    }
+                        $next = $page + 1;
+                        if($next <= $pageMax){
                     ?>
-                    <li class="next"><a href="./index.php?page=<?=$next?>">下一页</a></li>
+                        <li class="next"><a href="./index.php?page=<?=$next?>">下一页</a></li>
+                        <?php
+                    } ?>
+
 
                 </ul>
             </div>
