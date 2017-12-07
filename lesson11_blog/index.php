@@ -103,39 +103,80 @@ $result = getPosts(null, $category_id, $start, $limit);
                 </div>
                 <?php }?>
             </div>
+
+            <aside class="right">
+                <div class="weather"></div>
+                <div class="news">
+                    <h3>
+                        <p>最新<span>文章</span></p>
+                    </h3>
+                    <ul class="rank">
+                        <li>
+                            <a href="" title="" target="_blank">周鸿祎---梦想</a>
+                        </li>
+                        <li>
+                            <a href="" title="" target="_blank">4月8 小米节</a>
+                        </li>
+                        <li>
+                            <a href="" title="" target="_blank">李开复-如何管理时间</a>
+                        </li>
+
+                    </ul>
+                    <h3 class="ph">
+                        <p>点击<span>排行</span></p>
+                    </h3>
+                    <ul class="paih">
+
+                        <li>
+                            <a href="" title="" target="_blank">周鸿祎---梦想</a>
+                        </li>
+                        <li>
+                            <a href="" title="" target="_blank">4月8 小米节</a>
+                        </li>
+                        <li>
+                            <a href="" title="" target="_blank">面包</a>
+                        </li>
+                    </ul>
+
+                    <h3 class="links">
+                        <p>友情<span>链接</span></p>
+                    </h3>
+                    <ul class="website">
+                        <li>
+                            <a href="http://www.dodobook.cc/" target="_blank">dodobook博客</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
         </article>
 
-        <div class="container">
-<!--            --><?//=getNav()?>
+        <div id="pager" class="myyiiPager">
+            <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="">首页</a></li>
+                <?php if($page > 1){
+                ?>
+                    <li class="previous hidden"><a href="./index.php?page=<?=($page-1)?>">上一页</a></li>
+                <?php } ?>
 
-            <div id="pager" class="myyiiPager">
-                <ul id="yw0" class="yiiPager"><li class="first hidden"><a href="">首页</a></li>
-                    <?php if($page > 1){
-                    ?>
-                        <li class="previous hidden"><a href="./index.php?page=<?=($page-1)?>">上一页</a></li>
-                    <?php } ?>
-
-                    <?php for($i = 1; $i <= $pageMax; $i++){
-                        $selected = '';
-                        if($page == $i){
-                            $selected = 'selected';
-                        }
-                        echo "<li class='page $selected'><a href='./index.php?page=$i'>$i</a></li>";
+                <?php for($i = 1; $i <= $pageMax; $i++){
+                    $selected = '';
+                    if($page == $i){
+                        $selected = 'selected';
                     }
+                    echo "<li class='page $selected'><a href='./index.php?page=$i'>$i</a></li>";
+                }
 
-                    ?>
+                ?>
 
+                <?php
+                    $next = $page + 1;
+                    if($next <= $pageMax){
+                ?>
+                    <li class="next"><a href="./index.php?page=<?=$next?>">下一页</a></li>
                     <?php
-                        $next = $page + 1;
-                        if($next <= $pageMax){
-                    ?>
-                        <li class="next"><a href="./index.php?page=<?=$next?>">下一页</a></li>
-                        <?php
-                    } ?>
+                } ?>
 
 
-                </ul>
-            </div>
+            </ul>
         </div>
 
     </body>

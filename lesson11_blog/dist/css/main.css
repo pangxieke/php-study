@@ -26,6 +26,12 @@ ul {
 .fl {
     float: left;
 }
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
 
 .mt10 {
     margin-top: 10px;
@@ -398,4 +404,75 @@ ul.yiiPager .hidden a
 ul.yiiPager .first, ul.yiiPager .last
 {
     display:none;
+}
+
+aside {
+    width: 250px;
+    margin: 10px 0
+}
+
+.news h3 {
+    font-size: 14px;
+    background: url(../images/r_title_bg.jpg) repeat-x center
+}
+
+.news h3 p {
+    background: #fff;
+    width: 70px
+}
+
+.news h3 span {
+    color: #65b020
+}
+
+.news h3.ph span {
+    color: #37ccca;
+}
+
+.news h3.links span {
+    color: #F17B6B;
+}
+
+.news ul {
+    margin-bottom: 20px
+}
+
+.news ul li a:hover {
+    text-decoration: underline
+}
+
+.rank li {
+    height: 25px;
+    line-height: 25px;
+    clear: both;
+    padding-left: 5px;
+    overflow: hidden;
+    padding-left: 15px;
+    background: url(../images/li.jpg) no-repeat left center;
+}
+
+.rank {
+    margin: 10px 0
+}
+
+.rank li a {
+    color: #333;
+}
+
+.rank li:first-child a {
+    color: #f00;
+    background: url(/skin/blog/images/new.gif) no-repeat 200px;
+    display: block;
+}
+.paih {
+    background: url(../images/ph.jpg) no-repeat left 8px;
+    margin: 10px 0
+}
+
+.paih li {
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+    padding-left: 24px;
+    border-bottom: #CCC dotted 1px;
 }
