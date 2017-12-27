@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * 建造者模式
+ *
+ * Class Builder
+ */
 class Builder{
 
     private $name;

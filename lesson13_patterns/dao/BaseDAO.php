@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * 数据访问对象模式
+ *
+ * Class BaseDAO
+ */
 class BaseDAO{
 
     private $connect;
@@ -25,7 +31,7 @@ class BaseDAO{
         }
         $sql .= implode(',', $updates);
         $sql .= " Where {$this->primaryKey} = '{$filedsArr[$this->primaryKey]}' ";
-        
+
         mysqli_query($this->connect, $sql);
     }
 }
